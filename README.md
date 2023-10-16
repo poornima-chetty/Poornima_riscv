@@ -45,11 +45,65 @@ $val[15:0] = $reset ? 1 : >>1$val + >>2$val
 ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/a9a2695c-1dbc-4b41-83e2-1c04f23e5827)
 ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/b6ce3c06-655f-4f42-aa52-378537d01a11)
 
+**Free running counter
+**
+
+
+![VV](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/6835cb85-2752-4b6f-834b-896106c47888)
+
 
 **PIPELINING**
+**Pipelined pythagoras's theorem**
+
+
+ logic to calculate the length c below, given a and b, using Pythagora’s Theorem.
+
+
+c = sqrt(a2 + b2)
+ Pythagoras’s Theorem
+ ![PY](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/7637d9f8-0121-4d27-bb79-4fe0bfd3f135)
+
+ 
+ 
+This logic can be implemented in a circuit as:
+
+
+Pythagorean Theorem Logic
+
+L
+@1
+      $aa_sq[31:0] = $aa * $aa;
+      $bb_sq[31:0] = $bb * $bb;
+   @2
+      $cc_sq[31:0] = $aa_sq + $bb_sq;
+   @3
+      $cc[31:0] = sqrt($cc_sq);
 
 
 
+![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/d1030fd1-072b-46ba-80ea-2a82813a0ea3)
+
+   |calc
+      
+      @0
+         $aa_sq[7:0] = $aa[3:0] ** 2;
+         $bb_sq[7:0] = $bb[3:0] ** 2;
+      @2
+         $cc_sq[8:0] = $aa_sq + $bb_sq;
+      @4
+         $cc[4:0] = sqrt($cc_sq);
+
+         PIPELINED CALCULATOR
+
+         **VALIDITY**
+     Validity makes the code easier to debug, with cleaner design, better error checking and automated clock gating.
+
+Clock gating is a power saving feature as it avoids toggling clock signals.
+
+**Distance calculator**
+
+
+         
 
 
 
