@@ -1,3 +1,14 @@
+**RISC-V**
+ RISC-V is an open-source instruction set architecture used to develop custom processors for a variety of applications, from embedded designs to supercomputers.
+ [RISC](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/f304d65d-47f1-4336-bf09-f71d949ad493)
+
+
+**DAY 1**
+
+
+
+**Digital Logic with TL-Verilog and Makerchip**
+
 **LOGIC GATES**
  A logic gate is a device that acts as a building block for digital circuits.
  ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/c343bc34-7cf0-4642-8f2a-ca721902df29)
@@ -71,7 +82,7 @@ This logic can be implemented in a circuit as:
 
 Pythagorean Theorem Logic
 
-L
+```L
 @1
       $aa_sq[31:0] = $aa * $aa;
       $bb_sq[31:0] = $bb * $bb;
@@ -80,7 +91,7 @@ L
    @3
       $cc[31:0] = sqrt($cc_sq);
 
-
+```
 
 ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/d1030fd1-072b-46ba-80ea-2a82813a0ea3)
 
@@ -128,7 +139,7 @@ Clock gating is a power saving feature as it avoids toggling clock signals.
 ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/bdff2d47-48ed-4fbc-8321-a9203f0711ed)
 
 **2-Cycle Calculator with Validity**
-calc
+```calc
       @0
          $reset = *reset;
       @1
@@ -147,6 +158,7 @@ calc
                         ($op[1:0] == 2'b00) ? $sum :
                         ($op[1:0] == 2'b01) ? $diff :
                         ($op[1:0] == 2'b10) ? $prod : $quot;
+```
 
 ![ver](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/8c1ebda9-deed-47a4-9f1e-46f2ee850dd4)
 **Calculator with Single-Value Memory**
@@ -178,6 +190,7 @@ calc
 ```
 
 ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/818afd66-b3ee-49ff-b547-0775e33b5971)
+**DAY 2**
 
 **Basic RISC-V CPU Microarchitecture**
 
