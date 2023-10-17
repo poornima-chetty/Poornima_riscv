@@ -186,3 +186,46 @@ calc
 1.Fetch and Decode
 2.RISC-V Control Logic
 **Introduction to simple RISC-V micro-architecture**
+![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/f258610b-3c9b-4c4a-a5bc-1fcb6b849d90)
+A single-cycle RISC-V CPU is a simplified implementation of a RISC-V (Reduced Instruction Set Computing) processor where each instruction is executed in a single clock cycle.
+**Instruction Fetch (IF)**: In the first stage, the CPU fetches the instruction from memory using the program counter (PC) and increments the PC to point to the next instruction. The instruction is loaded into the instruction register (IR).
+
+**Instruction Decode (ID)**: During this stage, the CPU decodes the instruction in the IR. It identifies the operation to be performed, the source registers, and the destination register. It also performs register file reads.
+
+**Execute (EX)**: In this stage, the actual execution of the instruction occurs. For ALU (Arithmetic Logic Unit) operations, this is where the ALU performs the calculations. For memory operations, such as loads and stores, the memory access is performed.
+
+**Memory Access (MEM):** In this stage, the CPU interacts with memory. If the instruction is a load or store, data is read from or written to memory. If the instruction does not involve memory access, this stage becomes a pass-through stage.
+
+**Write-Back (WB):** The final stage is where the results of the instruction are written back to the register file. The result of an ALU operation or data loaded from memory is written to the destination register.
+
+**FETCH AND DECODE**
+Implementation Plan
+![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/6d1f7934-3daf-47b3-8d7a-a81a5387c72a)
+
+**fetch logic **
+code**
+  ```|cpu
+      @0
+         $reset = *reset;
+         $pc[31:0] = >>1$reset ? 32'b0 :
+                                 >>1$pc + 32'd4;
+         $imem_rd_addr[M4_IMEM_INDEX_CNT-1:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
+         $imem_rd_en = !$reset;
+      /imem[7:0]
+         @1
+            $instr[31:0] = *instrs\[#imem\];
+      ?$imem_rd_en
+         @1
+            $imem_rd_data[31:0] = /imem[$imem_rd_addr]$instr;
+      @1   
+         $instr[31:0] = $imem_rd_data[31:0];
+|cpu
+      m4+imem(@1)    // Args: (read stage)
+      m4+rf(@1, @1)  // Args: (read stage, write stage) - if equal, no register bypass is required
+
+
+```
+
+
+
+
