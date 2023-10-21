@@ -154,6 +154,8 @@ gtkwave vsdserializer_v1.vcd
 
 ```
 ![outputfinal](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/97448556-699a-4387-8b2e-aa04354d2dee)
+![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/bffdaef6-daef-4d13-919b-1599adf4ef6f)
+
 **RTL synthesis**
 
 Go to verilog_files directory and type yosys
