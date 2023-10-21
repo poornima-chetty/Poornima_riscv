@@ -1,5 +1,87 @@
-RTL synthesis and GLS simulation:
-tools used
+**Design and Implementation of a 10-bit Serializer(vsdserializer_v1) in RTL2GDS flow using SKY130 pdks**
+**The purpose of this project is to produce clean GDS (Graphic Design System) Final Layout with all details that is used to print photomasks used in fabrication of a behavioral RTL (Register-Transfer Level) of a 10-bit Serializer, using SkyWater 130 nm PDK (Process Design Kit)*
+
+**About The Project**
+OpenLANE is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, Fault, OpenPhySyn, SPEF-Extractor and custom methodology scripts for design exploration and optimization. It is a tool started for true open source tape-out experience and comes with APACHE version 2.0. The goal of OpenLANE is to produce clean GDSII without any human intervention. OpenLANE is tuned for Skywater 130nm open-source PDK and can be used to produce hard macros and chips
+*Pin Configuration*
+![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/65b9c532-afca-40da-b218-1846dbfb7ff4)
+
+![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/a705832f-bc58-4120-afce-6515213727c0)
+**RTL to GDSII Introduction**
+From conception to product, the ASIC design flow is an iterative process that is not static for every design. The details of the flow may change depending on ECO’s, IP requirements, DFT insertion, and SDC constraints, however the base concepts still remain. The flow can be broken down into 11 steps:
+
+Architectural Design – A system engineer will provide the VLSI engineer with specifications for the system that are determined through physical constraints. The VLSI engineer will be required to design a circuit that meets these constraints at a microarchitecture modeling level.
+
+RTL Design/Behavioral Modeling – RTL design and behavioral modeling are performed with a hardware description language (HDL). EDA tools will use the HDL to perform mapping of higher-level components to the transistor level needed for physical implementation. HDL modeling is normally performed using either Verilog or VHDL. One of two design methods may be employed while creating the HDL of a microarchitecture:
+
+a. RTL Design – Stands for Register Transfer Level. It provides an abstraction of the digital circuit using:
+
+i. Combinational logic
+ii. Registers
+iii. Modules (IP’s or Soft Macros)
+b. Behavioral Modeling – Allows the microarchitecture modeling to be performed with behavior-based modeling in HDL. This method bridges the gap between C and HDL allowing HDL design to be performed
+
+RTL Verification - Behavioral verification of design
+
+DFT Insertion - Design-for-Test Circuit Insertion
+
+Logic Synthesis – Logic synthesis uses the RTL netlist to perform HDL technology mapping. The synthesis process is normally performed in two major steps:
+
+GTECH Mapping – Consists of mapping the HDL netlist to generic gates what are used to perform logical optimization based on AIGERs and other topologies created from the generic mapped netlist.
+
+Technology Mapping – Consists of mapping the post-optimized GTECH netlist to standard cells described in the PDK
+
+Standard Cells – Standard cells are fixed height and a multiple of unit size width. This width is an integer multiple of the SITE size or the PR boundary. Each standard cell comes with SPICE, HDL, liberty, layout (detailed and abstract) files used by different tools at different stages in the RTL2GDS flow.
+
+Post-Synthesis STA Analysis: Performs setup analysis on different path groups.
+
+Floorplanning – Goal is to plan the silicon area and create a robust power distribution network (PDN) to power each of the individual components of the synthesized netlist. In addition, macro placement and blockages must be defined before placement occurs to ensure a legalized GDS file. In power planning we create the ring which is connected to the pads which brings power around the edges of the chip. We also include power straps to bring power to the middle of the chip using higher metal layers which reduces IR drop and electro-migration problem.
+
+Placement – Place the standard cells on the floorplane rows, aligned with sites defined in the technology lef file. Placement is done in two steps: Global and Detailed. In Global placement tries to find optimal position for all cells but they may be overlapping and not aligned to rows, detailed placement takes the global placement and legalizes all of the placements trying to adhere to what the global placement wants.
+
+CTS – Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements. The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.
+
+Routing – Implements the interconnect system between standard cells using the remaining available metal layers after CTS and PDN generation. The routing is performed on routing grids to ensure minimal DRC errors.
+
+The Skywater 130nm PDK uses 6 metal layers to perform CTS, PDN generation, and interconnect routing. Shown below is an example of a base RTL to GDS flow in ASIC design:
+![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/168bdcf8-a356-4f31-8b7a-1e8db5259446)
+
+
+**what is serializer**
+Serialization is the process of converting a data object—a combination of code and data represented within a region of data storage—into a series of bytes that saves the state of the object in an easily transmittable form. In this serialized form, the data can be delivered to another data store (such as an in-memory computing platform), application, or some other destination.
+A serializer circuit converts parallel data—in other words, multiple streams of data—into a serial (one bit) stream of data that is transmitted over a high-speed connection, such as LVDS, to a receiver that converts the serial stream back to the original, parallel data. A clock system puts parallel into a serial by taking bits from the multiple streams and alternating them on up and down parts of the signals.
+![serialiser](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/e1d3eaee-48a7-43f0-a72e-e4f455addc76)
+Here's how a serializer typically works:
+
+**Input Data**: The serializer takes structured data as input. This data can be in the form of complex data structures, objects, or even simple data types like numbers and strings.
+
+**Serialization Process**:
+
+**Data Traversal**: The serializer starts by traversing the input data. It follows a specific algorithm to access each part of the data.
+**Data Conversio**n: As it traverses the data, the serializer converts each piece of information into a format that can be represented linearly or in binary form. This may involve mapping complex data structures into a sequence of bytes, for example.
+**Encoding Rules**: The serializer often follows encoding rules or schemas to ensure that the serialized data can be correctly reconstructed by a deserializer. These encoding rules may include data type information, length indicators, and other metadata.
+**Output**: The serialized data is the output of the serializer. This output can be in the form of a binary stream, text representation (e.g., JSON or XML), or any other format suitable for the intended purpose.
+
+**Storage or Transmission**: The serialized data can be stored in a file, transmitted over a network, or used in any other way that requires the data to be in a linear or binary format.
+
+**Deserialization**: To use the serialized data, a deserializer is required. The deserializer performs the reverse process, converting the serialized data back into its original structured form.
+
+
+
+
+
+**RTL synthesis and GLS simulation:**
+
+Tools used
+
+
+**iVerilog**:Icarus Verilog is a valuable tool for digital design, enabling engineers and designers to develop, test, and verify complex digital circuits and systems in a software simulation environment before committing to hardware implementation.
+
+**GTKwave** - GTKWave is a free and open-source waveform viewer. It's used primarily in digital design and verification to display simulation results generated by digital simulation tools like Icarus Verilog (which includes IVERILOG).
+
+
+** Yosys ** - Yosys is an open-source framework for Verilog RTL synthesis. It's widely used in digital design for converting high-level descriptions of a digital circuit into a gate-level representation. In other words, it helps in transforming a behavioral description (written in a language like Verilog) into a netlist, which is a detailed representation of the digital logic in terms of gates and their interconnections.
+
 Go to the following directory and create two ".v" files
 **code**
 **pes_ser.v**
@@ -82,7 +164,7 @@ To make the given netlist code even more simpler and small give the following co
 
 ```
 write_verilog -noattr pes_ser.v
-pes_ser.v
+!gvim pes_ser.v
 ```
 ![peser](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/b8ebaa88-86da-4222-8d65-d10f25c07277)
 **GLS(Gate Level Simulation)**
