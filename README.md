@@ -1,5 +1,8 @@
 **Design and Implementation of a 10-bit Serializer(vsdserializer_v1) in RTL2GDS flow using SKY130 pdks**
-**The purpose of this project is to produce clean GDS (Graphic Design System) Final Layout with all details that is used to print photomasks used in fabrication of a behavioral RTL (Register-Transfer Level) of a 10-bit Serializer, using SkyWater 130 nm PDK (Process Design Kit)*
+
+
+
+The purpose of this project is to produce clean GDS (Graphic Design System) Final Layout with all details that is used to print photomasks used in fabrication of a behavioral RTL (Register-Transfer Level) of a 10-bit Serializer, using SkyWater 130 nm PDK (Process Design Kit)*
 
 **About The Project**
 OpenLANE is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, Fault, OpenPhySyn, SPEF-Extractor and custom methodology scripts for design exploration and optimization. It is a tool started for true open source tape-out experience and comes with APACHE version 2.0. The goal of OpenLANE is to produce clean GDSII without any human intervention. OpenLANE is tuned for Skywater 130nm open-source PDK and can be used to produce hard macros and chips
@@ -7,6 +10,8 @@ OpenLANE is an automated RTL to GDSII flow based on several components including
 ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/65b9c532-afca-40da-b218-1846dbfb7ff4)
 
 ![image](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/a705832f-bc58-4120-afce-6515213727c0)
+
+
 **RTL to GDSII Introduction**
 From conception to product, the ASIC design flow is an iterative process that is not static for every design. The details of the flow may change depending on ECO’s, IP requirements, DFT insertion, and SDC constraints, however the base concepts still remain. The flow can be broken down into 11 steps:
 
@@ -48,9 +53,13 @@ The Skywater 130nm PDK uses 6 metal layers to perform CTS, PDN generation, and i
 
 
 **what is serializer**
+
+
 Serialization is the process of converting a data object—a combination of code and data represented within a region of data storage—into a series of bytes that saves the state of the object in an easily transmittable form. In this serialized form, the data can be delivered to another data store (such as an in-memory computing platform), application, or some other destination.
 A serializer circuit converts parallel data—in other words, multiple streams of data—into a serial (one bit) stream of data that is transmitted over a high-speed connection, such as LVDS, to a receiver that converts the serial stream back to the original, parallel data. A clock system puts parallel into a serial by taking bits from the multiple streams and alternating them on up and down parts of the signals.
 ![serialiser](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/e1d3eaee-48a7-43f0-a72e-e4f455addc76)
+
+
 Here's how a serializer typically works:
 
 **Input Data**: The serializer takes structured data as input. This data can be in the form of complex data structures, objects, or even simple data types like numbers and strings.
@@ -156,6 +165,10 @@ type following commands
  synth -top vsdserilaizer_v1
 ```
 ![abc](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/19be6e40-00d4-4c69-9df8-03efba542132)
+
+synthesis
+
+![dot](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/67fff066-cd76-4f7a-b33c-cd0ffc03c97e)
 
 
 **to view the netlist 
