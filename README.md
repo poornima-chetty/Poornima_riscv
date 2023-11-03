@@ -194,7 +194,9 @@ To use the iVerilog, we give the following commands as shown below:
 
 
 ***Installation of ngspice magic and OpenLANE***
+
 **ngspice***
+
 Download the tarball from https://sourceforge.net/projects/ngspice/files/ to a local directory
 
 ```
@@ -312,7 +314,10 @@ Physical Cells
  
 ```
 run_floorplan
+
 ```
+![kp](https://github.com/poornima-chetty/pes_ser/assets/142583396/ccd3ca03-68ee-46c9-af63-c2fa1b71dc71)
+
 ![floor](https://github.com/poornima-chetty/pes_ser/assets/142583396/132c383b-7345-4661-92a1-a64689ec79e2)
 
 
@@ -341,6 +346,7 @@ magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef r
 
 ![op6](https://github.com/poornima-chetty/pes_ser/assets/142583396/f0709e01-356f-41d3-828a-a34cb68aaf49)
 **CTS(Clock Tree Synthesis)**
+
 Now to run cts we type
 ```
 run_cts
@@ -384,9 +390,29 @@ To view the design we type
 magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ser.def &
 
 ```
-![routing](https://github.com/poornima-chetty/pes_ser/assets/142583396/d37b9f74-931e-4ee8-ad64-a7c0a22c2ab1)
 ![routing1](https://github.com/poornima-chetty/pes_ser/assets/142583396/dc4facae-8e2a-416c-bad6-d62f7f3ae8ca)
 
+![routing](https://github.com/poornima-chetty/pes_ser/assets/142583396/d37b9f74-931e-4ee8-ad64-a7c0a22c2ab1)
 
+the generated reports can be viewed here
+\
+**power report**
+
+[power rr](https://github.com/poornima-chetty/pes_ser/assets/142583396/4e53e653-809d-4e2f-98ea-baa3233c5c63)
+**skew report**
+
+![rrskew](https://**github.com/poornima-chetty/pes_ser/assets/142583396/847ba587-ff3e-4d3a-bcd3-aef25fedc440)!
+**area report**
+
+[rrarea](https://github.com/poornima-chetty/pes_ser/assets/142583396/42bed310-7270-47c7-8434-76b019147fa1)
+
+
+**Statistics**
+
+
+**Internal Power**=  1.04e-04   2.13e-05   4.00e-10   1.26e-04 
+**Switching Power** =  2.13e-05 
+**Leakage Power** =  4.00e-10 
+**Total Power** = 1.26e-04 
 
 
