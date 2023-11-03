@@ -1,4 +1,4 @@
-**Design and Implementation of a 10-bit Serializer(vsdserializer_v1) in RTL2GDS flow using SKY130 pdks**
+***Design and Implementation of a 10-bit Serializer in RTL2GDS flow using SKY130 pdks***
 
 
 
@@ -395,24 +395,29 @@ magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef r
 ![routing](https://github.com/poornima-chetty/pes_ser/assets/142583396/d37b9f74-931e-4ee8-ad64-a7c0a22c2ab1)
 
 the generated reports can be viewed here
-\
+
 **power report**
 
-[power rr](https://github.com/poornima-chetty/pes_ser/assets/142583396/4e53e653-809d-4e2f-98ea-baa3233c5c63)
+![power rr](https://github.com/poornima-chetty/pes_ser/assets/142583396/4e53e653-809d-4e2f-98ea-baa3233c5c63)
+
 **skew report**
 
-![rrskew](https://**github.com/poornima-chetty/pes_ser/assets/142583396/847ba587-ff3e-4d3a-bcd3-aef25fedc440)!
+ ![rrskew](https://github.com/poornima-chetty/pes_ser/assets/142583396/be63a82e-0a13-4105-9778-791600e2aafd)
+
 **area report**
 
-[rrarea](https://github.com/poornima-chetty/pes_ser/assets/142583396/42bed310-7270-47c7-8434-76b019147fa1)
+![rrarea](https://github.com/poornima-chetty/pes_ser/assets/142583396/42bed310-7270-47c7-8434-76b019147fa1)
 
 
 **Statistics**
 
 
 **Internal Power**=  1.04e-04   2.13e-05   4.00e-10   1.26e-04 
+
 **Switching Power** =  2.13e-05 
+
 **Leakage Power** =  4.00e-10 
+
 **Total Power** = 1.26e-04 
 
 
