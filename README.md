@@ -307,11 +307,15 @@ Physical Cells
 
 
 ***floorplan***
+
 ![ln5](https://github.com/poornima-chetty/pes_ser/assets/142583396/6e4e4be5-84ef-4ebf-a8b9-2b274a676591)
  
 ```
 run_floorplan
 ```
+![floor](https://github.com/poornima-chetty/pes_ser/assets/142583396/132c383b-7345-4661-92a1-a64689ec79e2)
+
+
 To view the design we type
 ```
 magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ser.def &
@@ -319,5 +323,70 @@ magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef r
 ```
 
 ![op3](https://github.com/poornima-chetty/pes_ser/assets/142583396/a14b0288-d323-493b-b1f8-143f21aa36f8)
-![op4](https://github.com/poornima-chetty/pes_ser/assets/142583396/049c327b-1f94-457e-928e-b4aa5b1b9e3d)
+
+**placements**
+type
+```
+run_placement
+```
+
+![op4](https://github.com/poornima-chetty/pes_ser/assets/142583396/d15c05bb-139c-44fe-b74a-63c107e0bc90)
+To view the design we type
+```
+magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ser.def &
+
+```
+
+![op5](https://github.com/poornima-chetty/pes_ser/assets/142583396/7a469bbb-9c65-4859-b88e-58af894ba07e)
+
+![op6](https://github.com/poornima-chetty/pes_ser/assets/142583396/f0709e01-356f-41d3-828a-a34cb68aaf49)
+**CTS(Clock Tree Synthesis)**
+Now to run cts we type
+```
+run_cts
+```
+
+
+![op7](https://github.com/poornima-chetty/pes_ser/assets/142583396/492d096f-df26-4665-bfe5-b1807268e2e2)
+
+the reports can be viewed here
+
+
+**power report**
+
+![powerreport](https://github.com/poornima-chetty/pes_ser/assets/142583396/10c09534-32a6-4f0b-90ef-4b26b1fd1f95)
+
+**area report***
+
+![area report](https://github.com/poornima-chetty/pes_ser/assets/142583396/b1081ac4-87df-444f-843a-0e1e81ee6bfe)
+
+
+**skew report**
+
+![skew report](https://github.com/poornima-chetty/pes_ser/assets/142583396/b2ef7141-395c-47a6-a330-aa6ed40fcccf)
+
+**summary report**
+
+
+![summary report](https://github.com/poornima-chetty/pes_ser/assets/142583396/7cadbf25-4e41-4ff6-a82c-a41fa356332c)
+
+
+**routing**
+```
+run_routing
+```
+
+
+![coderouting](https://github.com/poornima-chetty/pes_ser/assets/142583396/6ac9bc44-79d4-4f32-81f1-c0e47ba5f9d5)
+
+To view the design we type
+```
+magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ser.def &
+
+```
+![routing](https://github.com/poornima-chetty/pes_ser/assets/142583396/d37b9f74-931e-4ee8-ad64-a7c0a22c2ab1)
+![routing1](https://github.com/poornima-chetty/pes_ser/assets/142583396/dc4facae-8e2a-416c-bad6-d62f7f3ae8ca)
+
+
+
 
