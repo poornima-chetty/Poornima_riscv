@@ -193,8 +193,131 @@ To use the iVerilog, we give the following commands as shown below:
 ![vsdser](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/a1956aad-45d2-445f-8137-db33683b1b53)
 
 
+***Installation of ngspice magic and OpenLANE***
+**ngspice***
+Download the tarball from https://sourceforge.net/projects/ngspice/files/ to a local directory
 
+```
+cd $HOME
+sudo apt-get install libxaw7-dev
+tar -zxvf ngspice-41.tar.gz
+cd ngspice-41
+mkdir release
+cd release
+../configure  --with-x --with-readline=yes --disable-debug
+sudo make
+sudo make install
 
+```
 
+**magic**
+```
+sudo apt-get install m4
+sudo apt-get install tcsh
+sudo apt-get install csh
+sudo apt-get install libx11-dev
+sudo apt-get install tcl-dev tk-dev
+sudo apt-get install libcairo2-dev
+sudo apt-get install mesa-common-dev libglu1-mesa-dev
+sudo apt-get install libncurses-dev
+git clone https://github.com/RTimothyEdwards/magic
+cd magic
+./configure
+sudo make
+sudo make install
+```
+***OpenLANE***
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install -y build-essential python3 python3-venv python3-pip make git
 
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io
+sudo docker run hello-world
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo reboot 
+# After reboot
+docker run hello-world (should show you the output under 'Example Output' in https://hub.docker.com/_/hello-world)
+
+- To install the PDKs and Tools
+cd $HOME
+git clone https://github.com/The-OpenROAD-Project/OpenLane
+cd OpenLane
+make
+make test
+```
+
+ **OpenLANE Flow**
  
+ ![yyy](https://github.com/poornima-chetty/pes_ser/assets/142583396/a81badb1-bb07-4e40-a7ee-ac52e67e464b)
+ 
+ First we create a folder under the name of our design in the 'designs' folder.
+ cd pes_ser
+ 
+![json](https://github.com/poornima-chetty/pes_ser/assets/142583396/8a95067a-e341-4799-8aea-410c7899bace)
+
+Here we create a config.json file.
+We make a new directory called 'src'.
+Do cd src
+
+
+![ln1](https://github.com/poornima-chetty/pes_ser/assets/142583396/bfeea309-ec7c-4711-a508-4f0b4036c1f4)
+We add the following files to this directory.
+All these files are found above in the 'pes_ser' folder.
+
+
+
+![ln2](https://github.com/poornima-chetty/pes_ser/assets/142583396/9380d807-1e66-4332-bfde-81f642d89c62)
+
+Now in the main 'Openlane' directory type mkdir pdks.
+
+Copy paste the above file in it. Found in the verilog_model folder above.
+
+![ln3](https://github.com/poornima-chetty/pes_ser/assets/142583396/8c6271e3-874e-47e4-992a-5f32d6266031)
+
+Type make mount in the main Openlane folder.
+Then type ./flow.tcl -interactive.
+To prep the design type
+
+```
+prep -design pes_ser
+```
+**synthesis**
+
+![ln4](https://github.com/poornima-chetty/pes_ser/assets/142583396/796da944-4c12-416c-b6bc-80d801279d0b)
+
+Type
+```
+run_synthesis
+```
+Physical Cells
+![op1](https://github.com/poornima-chetty/pes_ser/assets/142583396/3c6b71f8-0473-4494-bf9e-c5526aa768de)
+
+
+
+
+
+
+
+***floorplan***
+![ln5](https://github.com/poornima-chetty/pes_ser/assets/142583396/6e4e4be5-84ef-4ebf-a8b9-2b274a676591)
+ 
+```
+run_floorplan
+```
+To view the design we type
+```
+magic -T /home/poornima/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ser.def &
+
+```
+
+![op3](https://github.com/poornima-chetty/pes_ser/assets/142583396/a14b0288-d323-493b-b1f8-143f21aa36f8)
+![op4](https://github.com/poornima-chetty/pes_ser/assets/142583396/049c327b-1f94-457e-928e-b4aa5b1b9e3d)
+
