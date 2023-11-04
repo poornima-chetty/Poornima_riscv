@@ -1,4 +1,4 @@
-***Design and Implementation of a 10-bit Serializer in RTL2GDS flow using SKY130 pdks***
+# Design and Implementation of a 10-bit Serializer in RTL2GDS flow using SKY130 pdks
 
 
 
@@ -192,7 +192,8 @@ To use the iVerilog, we give the following commands as shown below:
 ![pre](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/e72b7506-0e65-470a-8923-7036fdc2a6e7)
 ![vsdser](https://github.com/poornima-chetty/Poornima_riscv/assets/142583396/a1956aad-45d2-445f-8137-db33683b1b53)
 
-
+# PHYSICAL DESIGN
+ 
 ***Installation of ngspice magic and OpenLANE***
 
 **ngspice***
@@ -411,9 +412,9 @@ the generated reports can be viewed here
 
 **Statistics**
 
+**area**= 638um^2
 
-**Internal Power**=  1.04e-04   2.13e-05   4.00e-10   1.26e-04 
-
+**Internal Power**=  1.04e-04   
 **Switching Power** =  2.13e-05 
 
 **Leakage Power** =  4.00e-10 
